@@ -20,4 +20,5 @@ app.add_middleware(
 # Include routers
 app.include_router(auth.router, prefix="/v1/auth", tags=["auth"])
 app.include_router(users.router, prefix="/v1/users", tags=["users"])
-app.include_router(pods.router, prefix="/v1/pods", tags=["pods"]) 
+app.include_router(pods.router, prefix="/v1/pods", tags=["pods"])
+app.include_router(rtc.router, prefix="/v1/rtc", tags=["rtc"]) 

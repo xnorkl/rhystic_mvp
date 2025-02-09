@@ -2,20 +2,18 @@
 FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-# Change the working directory to the `app` directory
+# Change the working directory
 WORKDIR /app
 
-# Copy the lockfile and `pyproject.toml` into the image
-ADD uv.lock /app/uv.lock
-ADD pyproject.toml /app/pyproject.toml
+# Copy the project files
+COPY pyproject.toml /app/
+COPY src /app/src/
 
-# Install dependencies
-RUN uv sync --frozen --no-install-project
+# Install dependencies and the project in editable mode
+RUN uv pip install --system --no-cache -e .
 
-# Copy the project into the image
-ADD . /app
+# Expose the port
+EXPOSE 8000
 
-# Sync the project
-RUN uv sync --frozen
-
-CMD [ "python", "rhystic/foo.py"]
+# Use python -m to ensure we're using the installed uvicorn
+CMD ["python", "-m", "uvicorn", "rhystic.main:app", "--host", "0.0.0.0", "--port", "8000"]

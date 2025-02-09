@@ -5,17 +5,21 @@ description = "A platform for remote table top gaming session."
 authors = [{ name = "Thomas Gordon", email = "gordon@fuzzeverything.com" }]
 readme = "README.md"
 keywords = ['python']
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.12,<4.0"
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "httpx",
+    "pytest>=8.3.4",
 ]
 
 [project.urls]
@@ -35,6 +39,7 @@ dev = [
     "mkdocs>=1.4.2",
     "mkdocs-material>=8.5.10",
     "mkdocstrings[python]>=0.26.1",
+    "pytest-asyncio"
 ]
 
 

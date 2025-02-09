@@ -218,6 +218,23 @@ components:
         - email
         - password
 
+    PodParticipant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        joined_at:
+          type: string
+          format: date-time
+        left_at:
+          type: string
+          format: date-time
+       
+
     Pod:
       type: object
       properties:
@@ -235,7 +252,7 @@ components:
         participants:
           type: array
           items:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/PodParticipant'
       required:
         - id
         - name

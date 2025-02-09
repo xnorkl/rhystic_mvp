@@ -16,14 +16,14 @@ check: ## Run code quality tools.
 	@uv run deptry .
 
 .PHONY: test
-test: ## Test the code with pytest
-	@echo "🚀 Testing code: Running pytest"
-	@uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=xml
+test:
+	docker compose up -d
+	@echo "API is running at http://localhost:8000"
+	@echo "API docs available at http://localhost:8000/docs"
 
 .PHONY: build
-build: clean-build ## Build wheel file
-	@echo "🚀 Creating wheel file"
-	@uvx --from build pyproject-build --installer uv
+build:
+	docker compose build
 
 .PHONY: clean-build
 clean-build: ## Clean build artifacts
@@ -42,5 +42,13 @@ docs: ## Build and serve the documentation
 help:
 	@uv run python -c "import re; \
 	[[print(f'\033[36m{m[0]:<20}\033[0m {m[1]}') for m in re.findall(r'^([a-zA-Z_-]+):.*?## (.*)$$', open(makefile).read(), re.M)] for makefile in ('$(MAKEFILE_LIST)').strip().split()]"
+
+.PHONY: run
+run:
+	docker compose up
+
+.PHONY: stop
+stop:
+	docker compose down
 
 .DEFAULT_GOAL := help
