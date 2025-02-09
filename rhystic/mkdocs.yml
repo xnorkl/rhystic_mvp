@@ -1,0 +1,52 @@
+site_name: rhystic
+repo_url: https://github.com/xnorkl/rhystic
+site_url: https://xnorkl.github.io/rhystic
+site_description: A platform for remote table top gaming session.
+site_author: Thomas Gordon
+edit_uri: edit/main/docs/
+repo_name: xnorkl/rhystic
+copyright: Maintained by <a href="https://xnorkl.com">xnorkl</a>.
+
+nav:
+  - Home: index.md
+  - Modules: modules.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src/rhystic"]
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/xnorkl/rhystic
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/rhystic
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
