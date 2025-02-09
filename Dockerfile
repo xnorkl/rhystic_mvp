@@ -6,6 +6,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 WORKDIR /app
 
 # Copy the project files
+COPY .env /app/.env
 COPY pyproject.toml /app/
 COPY src /app/src/
 

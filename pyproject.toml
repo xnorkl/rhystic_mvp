@@ -20,6 +20,12 @@ dependencies = [
     "sqlalchemy",
     "httpx",
     "pytest>=8.3.4",
+    "passlib[bcrypt]", # for password hashing
+    "python-jose[cryptography]",
+    "python-dotenv",
+    "python-multipart", # for form data handling
+    "pydantic[email]>=2.10.6",
+    "pyjwt>=2.10.1",
 ]
 
 [project.urls]
